@@ -31,6 +31,12 @@ const whiteKeys = document.querySelectorAll('.key.white');
 const blackKeys = document.querySelectorAll('.key.black');
 
 document.addEventListener('keydown', (e) => {
+
+    // If the key is being held down, don't play the note again
+  if (e.repeat) {
+    return;
+  }
+  
   // Get the key that triggered the event
   const key = e.key;
   const whiteKeyIndex = WHITE_KEYS.indexOf(key);
@@ -44,8 +50,5 @@ document.addEventListener('keydown', (e) => {
     playNote(blackKeys[blackKeyIndex]);
   }
 
-  // If the key is being held down, don't play the note again
-  if (e.repeat) {
-    return;
-  }
+
 });
